@@ -1,643 +1,877 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Adálcio Santos — Portfólio · Projetos em Engenharia</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
-  <style>
-    :root {
-      --bg:        #0d1b2e;
-      --bg2:       #102035;
-      --surface:   #142540;
-      --border:    #1e3a5f;
-      --accent:    #f0a500;
-      --accent2:   #48cae4;
-      --gold:      #ffd700;
-      --text:      #dde8f5;
-      --text-dim:  #7a9bbf;
-      --green:     #43d98a;
-      --mono:      'IBM Plex Mono', monospace;
-      --sans:      'IBM Plex Sans', sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(72,202,228,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(72,202,228,.035) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── TOPBAR ── */
-    .topbar {
-      position: relative;
-      z-index: 2;
-      border-bottom: 1px solid var(--border);
-      padding: .75rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .topbar-logo {
-      font-family: var(--mono);
-      font-size: .72rem;
-      color: var(--accent2);
-      letter-spacing: .1em;
-    }
-
-    .topbar-links { display: flex; gap: 1.5rem; }
-    .topbar-links a {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      letter-spacing: .06em;
-      transition: color .2s;
-    }
-    .topbar-links a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      z-index: 1;
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 4rem 2rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .hero-tag {
-      font-family: var(--mono);
-      font-size: .7rem;
-      color: var(--accent2);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      margin-bottom: 1.25rem;
-      opacity: 0;
-      animation: fadeUp .5s .2s forwards;
-    }
-
-    .hero h1 {
-      font-family: var(--mono);
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 600;
-      line-height: 1.1;
-      color: #fff;
-      margin-bottom: 1.25rem;
-      opacity: 0;
-      animation: fadeUp .5s .35s forwards;
-    }
-    .hero h1 span { color: var(--accent); }
-
-    .hero-sub {
-      font-size: 1rem;
-      color: var(--text-dim);
-      max-width: 660px;
-      margin-bottom: 2.5rem;
-      line-height: 1.85;
-      opacity: 0;
-      animation: fadeUp .5s .5s forwards;
-    }
-    .hero-sub strong { color: var(--text); font-weight: 600; }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .45rem;
-      margin-bottom: 3rem;
-      opacity: 0;
-      animation: fadeUp .5s .65s forwards;
-    }
-
-    .badge {
-      font-family: var(--mono);
-      font-size: .63rem;
-      padding: .26rem .68rem;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text-dim);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adálcio Hugo | Engenharia de Materiais, Processos & Dados</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    .badge.hl   { border-color: var(--accent);  color: var(--accent); }
-    .badge.blue { border-color: var(--accent2); color: var(--accent2); }
-    .badge.gold { border-color: var(--gold);    color: var(--gold); }
+    <style>
+        :root {
+            --bg-primary: #0b0f17;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --bg-card-hover: #263346;
+            --border-color: #374151;
+            --border-accent: #1e3a8a;
+            
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --text-subtle: #6b7280;
+            
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
 
-    .scroll-hint {
-      font-family: var(--mono);
-      font-size: .66rem;
-      color: var(--text-dim);
-      letter-spacing: .15em;
-      opacity: 0;
-      animation: fadeUp .5s 1s forwards, blink 2s 1.5s infinite;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* ── SECTION ── */
-    section {
-      position: relative;
-      z-index: 1;
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    .section-label {
-      font-family: var(--mono);
-      font-size: .66rem;
-      color: var(--accent);
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
 
-    /* ── CARDS ── */
-    .projects { display: grid; gap: 1.5rem; }
+        a:hover {
+            color: var(--accent-blue);
+        }
 
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: border-color .3s, transform .3s, box-shadow .3s;
-    }
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--accent);
-      transform: scaleY(0);
-      transform-origin: bottom;
-      transition: transform .3s;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateX(5px);
-      box-shadow: -4px 0 20px rgba(240,165,0,.07);
-    }
-    .card:hover::before { transform: scaleY(1); }
+        /* Container */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
 
-    .card-number {
-      font-family: var(--mono);
-      font-size: .6rem;
-      color: var(--text-dim);
-      letter-spacing: .15em;
-      margin-bottom: .7rem;
-    }
+        /* Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+            padding: 1rem 0;
+        }
 
-    .card h2 {
-      font-family: var(--mono);
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: .4rem;
-    }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .card-context {
-      font-size: .76rem;
-      color: var(--accent2);
-      font-family: var(--mono);
-      margin-bottom: 1rem;
-    }
+        .logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
 
-    .card p {
-      font-size: .91rem;
-      color: var(--text-dim);
-      margin-bottom: 1.5rem;
-    }
+        .logo span {
+            color: var(--accent-cyan);
+        }
 
-    /* ── METRICS ── */
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: .7rem;
-      margin-bottom: 1.5rem;
-    }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
 
-    .metric {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: .7rem .9rem;
-    }
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
 
-    .metric-value {
-      font-family: var(--mono);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: var(--accent);
-      display: block;
-    }
-    .metric-value.green { color: var(--green); }
-    .metric-value.blue  { color: var(--accent2); }
-    .metric-label { font-size: .65rem; color: var(--text-dim); }
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
 
-    /* ── TAGS ── */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .32rem;
-      margin-bottom: 1.5rem;
-    }
-    .tag {
-      font-family: var(--mono);
-      font-size: .6rem;
-      padding: .16rem .52rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--text-dim);
-    }
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 4rem;
+            position: relative;
+        }
 
-    /* ── LINKS ── */
-    .card-links { display: flex; gap: .7rem; flex-wrap: wrap; }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: var(--accent-cyan);
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            margin-bottom: 1.5rem;
+        }
 
-    .btn {
-      font-family: var(--mono);
-      font-size: .7rem;
-      letter-spacing: .07em;
-      padding: .46rem 1.1rem;
-      border-radius: 2px;
-      text-decoration: none;
-      transition: all .2s;
-      display: inline-flex;
-      align-items: center;
-      gap: .32rem;
-    }
-    .btn-primary { background: var(--accent); color: #0d1b2e; font-weight: 600; }
-    .btn-primary:hover { background: #ffb800; }
-    .btn-ghost { border: 1px solid var(--border); color: var(--text-dim); }
-    .btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, #ffffff 0%, #9ca3af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-    @media (max-width: 620px) { .about-grid { grid-template-columns: 1fr; } }
+        .hero p.lead {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 820px;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
 
-    .about-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.4rem 1.5rem;
-    }
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
 
-    .about-block h3 {
-      font-family: var(--mono);
-      font-size: .68rem;
-      color: var(--accent2);
-      margin-bottom: .85rem;
-      letter-spacing: .1em;
-    }
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.25rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .about-block p,
-    .about-block li {
-      font-size: .87rem;
-      color: var(--text-dim);
-      line-height: 1.85;
-    }
-    .about-block ul { padding-left: 1rem; }
-    .about-block li { margin-bottom: .2rem; }
-    .about-block a { color: var(--accent); text-decoration: none; }
-    .about-block a:hover { text-decoration: underline; }
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-cyan);
+        }
 
-    .divider { border: none; border-top: 1px solid var(--border); margin: 1.4rem 0; }
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      border-top: 1px solid var(--border);
-      padding: 1.6rem 2rem;
-      max-width: 960px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    footer p { font-family: var(--mono); font-size: .66rem; color: var(--text-dim); }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a {
-      font-family: var(--mono);
-      font-size: .66rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      letter-spacing: .06em;
-      transition: color .2s;
-    }
-    .footer-links a:hover { color: var(--accent); }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: .25; }
-    }
-  </style>
+        /* Buttons & CTA */
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.35rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        section {
+            padding: 4rem 0;
+            border-top: 1px solid rgba(55, 65, 81, 0.4);
+        }
+
+        /* Project Filters */
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+        }
+
+        .project-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .project-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            background: rgba(11, 15, 23, 0.6);
+            padding: 0.85rem;
+            border-radius: 8px;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .metric-val {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-green);
+        }
+
+        .metric-lbl {
+            font-size: 0.75rem;
+            color: var(--text-subtle);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: calc(-1.5rem - 6px);
+            top: 0.25rem;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .role {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .date {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-subtle);
+        }
+
+        .timeline-bullets {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.925rem;
+        }
+
+        .timeline-bullets li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-bullets li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Competencies Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .skill-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list i {
+            font-size: 0.75rem;
+            color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            color: var(--text-subtle);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+            .timeline-header { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
-<div class="topbar">
-  <span class="topbar-logo">adalciohugo.github.io</span>
-  <nav class="topbar-links">
-    <a href="#projetos">projetos</a>
-    <a href="#sobre">sobre</a>
-    <a href="https://linkedin.com/in/adalcio-hugo" target="_blank">linkedin ↗</a>
-    <a href="https://github.com/adalciohugo" target="_blank">github ↗</a>
-  </nav>
-</div>
-
-<div class="hero">
-  <p class="hero-tag">// portfólio · projetos em engenharia</p>
-  <h1>Adálcio Hugo<br>Gonçalves dos <span>Santos</span></h1>
-  <p class="hero-sub">
-    <strong>Engenheiro de Materiais</strong> e <strong>Técnico em Química</strong> pelo CEFET-MG,
-    com vivência internacional na FEUP (Portugal) e experiência em duas
-    multinacionais: <strong>TUPY S.A.</strong> e <strong>TSEA Energia</strong>. Aplico dados, qualidade
-    e conhecimento técnico de materiais para resolver problemas reais com
-    resultados mensuráveis.
-  </p>
-  <div class="hero-badges">
-    <span class="badge gold">Engenharia de Materiais</span>
-    <span class="badge hl">Excel Avançado</span>
-    <span class="badge gold">Caracterização de Materiais</span>
-    <span class="badge hl">Python</span>
-    <span class="badge hl">Machine Learning</span>
-    <span class="badge hl">Power BI</span>
-    <span class="badge blue">Six Sigma Green Belt</span>
-    <span class="badge blue">CEP · DMAIC · PDCA</span>
-    <span class="badge">Inglês B2 — TOEFL iTP 567</span>
-    <span class="badge">Intercâmbio Portugal · FEUP</span>
-    <span class="badge">Técnico em Química</span>
-  </div>
-  <p class="scroll-hint">↓ &nbsp; ver projetos</p>
-</div>
-
-<section id="projetos">
-  <p class="section-label">projetos</p>
-  <div class="projects">
-
-    <div class="card">
-      <p class="card-number">// projeto 01</p>
-      <h2>Manutenção Preditiva Industrial</h2>
-      <p class="card-context">Manufatura · Classificação · Detecção de Falhas</p>
-      <p>
-        Modelo de classificação para prever falha de equipamento industrial
-        antes que ocorra, usando parâmetros operacionais em tempo real:
-        temperatura, rotação, torque e desgaste de ferramenta. Dataset real
-        com 10.000 registros (UCI Machine Learning Repository). O threshold
-        de decisão foi calibrado para priorizar detecção de falhas — decisão
-        justificada pelo custo diferencial entre parada não planejada e
-        inspeção preventiva.
-      </p>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-value">0.964</span>
-          <span class="metric-label">AUC-ROC</span>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-content">
+            <div class="logo">adalciohugo<span>.github.io</span></div>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#competencias">Competências</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
         </div>
-        <div class="metric">
-          <span class="metric-value blue">68%</span>
-          <span class="metric-label">Recall — falhas detectadas</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">1%</span>
-          <span class="metric-label">Taxa de alarmes falsos</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value green">+58%</span>
-          <span class="metric-label">Melhora no recall</span>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">Random Forest</span>
-        <span class="tag">Classificação Binária</span>
-        <span class="tag">Threshold Tuning</span>
-        <span class="tag">Curva ROC</span>
-        <span class="tag">Class Weight</span>
-        <span class="tag">Matriz de Confusão</span>
-        <span class="tag">Desbalanceamento de Classes</span>
-      </div>
-      <hr class="divider"/>
-      <div class="card-links">
-        <a href="https://github.com/adalciohugo/predictive-maintenance-manufacturing"
-           class="btn btn-primary" target="_blank">↗ &nbsp; Ver no GitHub</a>
-        <a href="https://github.com/adalciohugo/predictive-maintenance-manufacturing/blob/main/analise_manutencao_preditiva.ipynb"
-           class="btn btn-ghost" target="_blank">📓 &nbsp; Ver Notebook</a>
-      </div>
-    </div>
+    </header>
 
-    <div class="card">
-      <p class="card-number">// projeto 02</p>
-      <h2>Previsão de Consumo Energético Industrial</h2>
-      <p class="card-context">Siderurgia · Séries Temporais · Impacto Financeiro</p>
-      <p>
-        Modelo de regressão para prever o consumo elétrico dos próximos
-        15 minutos em uma usina siderúrgica real (DAEWOO Steel Co., Coreia do Sul),
-        viabilizando deslocamento de carga antes do horário de ponta —
-        período com tarifa até 3x maior. Data leakage identificado e corrigido
-        durante a validação. Economia estimada calculada com tarifas públicas
-        da ANEEL para consumidor industrial Grupo A.
-      </p>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-value">0.885</span>
-          <span class="metric-label">R² (modelo corrigido)</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value blue">6.69 kWh</span>
-          <span class="metric-label">Erro médio (MAE)</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value green">R$ 9.170</span>
-          <span class="metric-label">Economia anual estimada</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">35.040</span>
-          <span class="metric-label">Registros analisados</span>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">Random Forest Regressor</span>
-        <span class="tag">Séries Temporais</span>
-        <span class="tag">Feature Engineering</span>
-        <span class="tag">Lag Features</span>
-        <span class="tag">Data Leakage</span>
-        <span class="tag">Divisão Temporal</span>
-        <span class="tag">Tarifas ANEEL</span>
-      </div>
-      <hr class="divider"/>
-      <div class="card-links">
-        <a href="https://github.com/adalciohugo/steel-energy-consumption-prediction"
-           class="btn btn-primary" target="_blank">↗ &nbsp; Ver no GitHub</a>
-        <a href="https://github.com/adalciohugo/steel-energy-consumption-prediction/blob/main/previsao_consumo_energetico_industrial.ipynb"
-           class="btn btn-ghost" target="_blank">📓 &nbsp; Ver Notebook</a>
-      </div>
-    </div>
-<div class="card">
-      <p class="card-number">// projeto 03</p>
-      <h2>Diagnóstico de Óleo Isolante para Transformadores</h2>
-      <p class="card-context">Setor Elétrico · Eng. de Materiais · Degradação de Polímeros</p>
-      <p>
-        Ferramenta interativa para diagnóstico de qualidade de óleos isolantes
-        em transformadores e reguladores de tensão. Classifica conformidade
-        conforme NBR 10576 (OMI) e NBR 16518 (OVI), diagnostica falhas via
-        Triângulo de Duval (IEC 60599) e estima o Grau de Polimerização do
-        papel isolante (celulose Kraft) a partir do 2-furfuraldeído — conectando
-        ciência dos materiais poliméricos com engenharia de aplicação no setor
-        elétrico. Baseado na experiência no Depto. de Garantia da Qualidade
-        da TSEA Energia.
-      </p>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-value">7</span>
-          <span class="metric-label">Ensaios físico-químicos</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value blue">5</span>
-          <span class="metric-label">Fórmulas de GP (literatura)</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value green">7 zonas</span>
-          <span class="metric-label">Triângulo de Duval</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value">10</span>
-          <span class="metric-label">Amostras reais</span>
-        </div>
-      </div>
-      <div class="tags">
-        <span class="tag">React</span>
-        <span class="tag">Recharts</span>
-        <span class="tag">SVG</span>
-        <span class="tag">NBR 10576</span>
-        <span class="tag">NBR 16518</span>
-        <span class="tag">IEC 60599</span>
-        <span class="tag">Triângulo de Duval</span>
-        <span class="tag">DGA</span>
-        <span class="tag">Grau de Polimerização</span>
-        <span class="tag">2-Furfuraldeído</span>
-        <span class="tag">Degradação de Celulose</span>
-      </div>
-      <hr class="divider"/>
-      <div class="card-links">
-        <a href="https://github.com/adalciohugo/oil-diagnostic-tool"
-           class="btn btn-primary" target="_blank">↗ &nbsp; Ver no GitHub</a>
-        <a href="https://adalciohugo.github.io/oil-diagnostic-tool/"
-           class="btn btn-ghost" target="_blank">⚡ &nbsp; Usar Ferramenta</a>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero" id="sobre">
+            <div class="hero-badge">
+                <i class="fa-solid fa-microscope"></i> Engenheiro de Materiais & Processos Industriais
+            </div>
+            <h1>Adálcio Hugo Gonçalves dos Santos</h1>
+            <p class="lead">
+                <strong>Engenheiro de Materiais</strong> e <strong>Técnico em Química</strong> pelo CEFET-MG, com vivência internacional na <strong>FEUP (Portugal)</strong> e atuação prática em multinacionais como <strong>TUPY S.A.</strong> e <strong>TSEA Energia</strong>. Aplico métricas de qualidade (Six Sigma/DMAIC), ciência dos materiais e análise de dados para gerar soluções operacionais com resultados mensuráveis.
+            </p>
+            
+            <div class="hero-ctas">
+                <a href="#projetos" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> Ver Projetos</a>
+                <a href="https://linkedin.com/in/adalcio-hugo" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn ↗</a>
+                <a href="https://github.com/adalciohugo" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub ↗</a>
+                <a href="mailto:adalciobh@gmail.com" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> E-mail</a>
+            </div>
 
-<section id="sobre">
-  <p class="section-label">sobre</p>
-  <div class="about-grid">
+            <!-- Stats Highlights -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2º Lugar</div>
+                    <div class="stat-label">Mérito Acadêmico (CEFET-MG) | CR: 84,12</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Green Belt</div>
+                    <div class="stat-label">Lean Six Sigma (DMAIC / CEP / Minitab)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">FEUP</div>
+                    <div class="stat-label">Intercâmbio Internacional (Porto, Portugal)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">C2 / B2</div>
+                    <div class="stat-label">Inglês Fluente (EF SET C2 / TOEFL 567)</div>
+                </div>
+            </div>
+        </section>
 
-    <div class="about-block">
-      <h3>// formação acadêmica</h3>
-      <ul>
-        <li>Engenharia de Materiais — CEFET-MG (2020–2026)</li>
-        <li>Técnico em Química — CEFET-MG (2016–2018)</li>
-        <li>Intercâmbio — FEUP, Portugal (jul. 2024 – jan. 2025)</li>
-      </ul>
-    </div>
+        <!-- Projects Section -->
+        <section id="projetos">
+            <div class="section-header">
+                <div class="section-subtitle">// Portfólio Prático</div>
+                <h2 class="section-title">Projetos de Engenharia & Inteligência de Dados</h2>
+            </div>
 
-    <div class="about-block">
-      <h3>// experiência profissional</h3>
-      <ul>
-        <li>
-          <strong style="color:var(--text)">TUPY S.A.</strong>
-          — Estágio em Engenharia de Processos
-          <span style="font-size:.8rem">(abr. 2025 – fev. 2026)</span>
-        </li>
-        <li>
-          <strong style="color:var(--text)">EngeMat Soluções / CEFET-MG</strong>
-          — Diretor Presidente, Empresa Júnior
-          <span style="font-size:.8rem">(2022–2024)</span>
-        </li>
-        <li>
-          <strong style="color:var(--text)">TSEA Energia</strong>
-          — Estágio Técnico em Química
-          <span style="font-size:.8rem">(set. 2021 – fev. 2022)</span>
-        </li>
-      </ul>
-    </div>
+            <!-- Category Filter -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProjects('all')">Todos os Projetos</button>
+                <button class="filter-btn" onclick="filterProjects('processos')">Processos & Qualidade</button>
+                <button class="filter-btn" onclick="filterProjects('datascience')">Data Science & ML Industrial</button>
+                <button class="filter-btn" onclick="filterProjects('ferramentas')">Ferramentas Web & Softwares</button>
+            </div>
 
-    <div class="about-block">
-      <h3>// competências técnicas</h3>
-      <ul>
-        <li>Python · Pandas · Scikit-learn · Matplotlib · Seaborn</li>
-        <li>Excel Avançado · Power BI</li>
-        <li>Caracterização de Materiais · Metalografia</li>
-        <li>Ensaios Mecânicos e Físico-Químicos</li>
-        <li>Polímeros · Metais · Cerâmicos · Revestimentos</li>
-        <li>Normas ASTM · ABNT · IEC</li>
-        <li>CEP · DMAIC · PDCA · SIPOC · KPIs</li>
-        <li>Lean Six Sigma Green Belt (em andamento)</li>
-      </ul>
-    </div>
+            <div class="projects-grid">
 
-    <div class="about-block">
-      <h3>// contato</h3>
-      <ul>
-        <li><a href="https://linkedin.com/in/adalcio-hugo" target="_blank">LinkedIn ↗</a></li>
-        <li><a href="https://github.com/adalciohugo" target="_blank">GitHub ↗</a></li>
-        <li><a href="mailto:adalciobh@gmail.com">adalciobh@gmail.com</a></li>
-        <li>Belo Horizonte, MG · Brasil</li>
-        <li>Inglês B2 — TOEFL iTP 567</li>
-      </ul>
-    </div>
+                <!-- Project 01 -->
+                <div class="project-card" data-category="datascience processos">
+                    <div>
+                        <div class="project-category">// Manufatura · Classificação · Detecção de Falhas</div>
+                        <h3 class="project-title">Manutenção Preditiva Industrial</h3>
+                        <p class="project-description">
+                            Modelo de classificação para prever falha de equipamento industrial antes que ocorra, usando parâmetros operacionais em tempo real: temperatura, rotação, torque e desgaste de ferramenta. Dataset real com 10.000 registros (UCI Repository). O threshold de decisão foi calibrado para priorizar a detecção antecipada de falhas.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric-item">
+                                <span class="metric-val">0.964</span>
+                                <span class="metric-lbl">AUC-ROC</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">68%</span>
+                                <span class="metric-lbl">Recall (+58% melhora)</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">1%</span>
+                                <span class="metric-lbl">Taxa Alarmes Falsos</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">10.000</span>
+                                <span class="metric-lbl">Registros Analisados</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Random Forest</span>
+                            <span class="tag">Classificação Binária</span>
+                            <span class="tag">Threshold Tuning</span>
+                            <span class="tag">Curva ROC</span>
+                            <span class="tag">Class Weight</span>
+                            <span class="tag">Desbalanceamento</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/adalciohugo/predictive-maintenance-manufacturing" target="_blank"><i class="fa-brands fa-github"></i> Ver no GitHub ↗</a>
+                        <a href="https://github.com/adalciohugo/predictive-maintenance-manufacturing/blob/main/analise_manutencao_preditiva.ipynb" target="_blank"><i class="fa-solid fa-book-journal-whills"></i> Ver Notebook 📓</a>
+                    </div>
+                </div>
 
-  </div>
-</section>
+                <!-- Project 02 -->
+                <div class="project-card" data-category="datascience processos">
+                    <div>
+                        <div class="project-category">// Siderurgia · Séries Temporais · Impacto Financeiro</div>
+                        <h3 class="project-title">Previsão de Consumo Energético Industrial</h3>
+                        <p class="project-description">
+                            Modelo de regressão para prever o consumo elétrico dos próximos 15 minutos em uma usina siderúrgica real (DAEWOO Steel Co.), viabilizando o deslocamento de carga antes do horário de ponta (tarifa até 3x maior). Data leakage corrigido durante validação e economia calculada via tarifas públicas ANEEL.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric-item">
+                                <span class="metric-val">R$ 9.170</span>
+                                <span class="metric-lbl">Economia Anual Estimada</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">0.885</span>
+                                <span class="metric-lbl">R² (Modelo Corrigido)</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">6.69 kWh</span>
+                                <span class="metric-lbl">Erro Médio (MAE)</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">35.040</span>
+                                <span class="metric-lbl">Registros Analisados</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Random Forest Regressor</span>
+                            <span class="tag">Séries Temporais</span>
+                            <span class="tag">Feature Engineering</span>
+                            <span class="tag">Lag Features</span>
+                            <span class="tag">Data Leakage</span>
+                            <span class="tag">Tarifas ANEEL</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/adalciohugo/steel-energy-consumption-prediction" target="_blank"><i class="fa-brands fa-github"></i> Ver no GitHub ↗</a>
+                        <a href="https://github.com/adalciohugo/steel-energy-consumption-prediction/blob/main/previsao_consumo_energetico_industrial.ipynb" target="_blank"><i class="fa-solid fa-book-journal-whills"></i> Ver Notebook 📓</a>
+                    </div>
+                </div>
 
-<footer>
-  <p>© 2026 · Adálcio Hugo Gonçalves dos Santos</p>
-  <div class="footer-links">
-    <a href="https://linkedin.com/in/adalcio-hugo" target="_blank">LinkedIn</a>
-    <a href="https://github.com/adalciohugo" target="_blank">GitHub</a>
-    <a href="mailto:adalciobh@gmail.com">E-mail</a>
-  </div>
-</footer>
+                <!-- Project 03 -->
+                <div class="project-card" data-category="ferramentas processos">
+                    <div>
+                        <div class="project-category">// Setor Elétrico · Eng. de Materiais · Degradação Polímeros</div>
+                        <h3 class="project-title">Diagnóstico de Óleo Isolante para Transformadores</h3>
+                        <p class="project-description">
+                            Ferramenta interativa para diagnóstico de qualidade de óleos isolantes em transformadores e reguladores de tensão. Classifica conformidade conforme NBR 10576 e NBR 16518, diagnostica falhas via Triângulo de Duval (IEC 60599) e estima o Grau de Polimerização (GP) do papel de celulose.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric-item">
+                                <span class="metric-val">7</span>
+                                <span class="metric-lbl">Ensaios Físico-Químicos</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">5</span>
+                                <span class="metric-lbl">Fórmulas de GP</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">7 Zonas</span>
+                                <span class="metric-lbl">Triângulo de Duval</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-val">10</span>
+                                <span class="metric-lbl">Amostras Reais Validadas</span>
+                            </div>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Recharts</span>
+                            <span class="tag">SVG</span>
+                            <span class="tag">NBR 10576 / 16518</span>
+                            <span class="tag">IEC 60599</span>
+                            <span class="tag">DGA</span>
+                            <span class="tag">Degradação Celulose</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/adalciohugo/oil-diagnostic-tool" target="_blank"><i class="fa-brands fa-github"></i> Ver no GitHub ↗</a>
+                        <a href="https://adalciohugo.github.io/oil-diagnostic-tool/" target="_blank"><i class="fa-solid fa-bolt"></i> Usar Ferramenta ⚡</a>
+                    </div>
+                </div>
 
+            </div>
+        </section>
+
+        <!-- Experience Timeline Section -->
+        <section id="experiencia">
+            <div class="section-header">
+                <div class="section-subtitle">// Trajetória Profissional</div>
+                <h2 class="section-title">Experiência na Indústria & Gestão</h2>
+            </div>
+
+            <div class="timeline">
+                
+                <!-- TUPY S.A. -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="company">TUPY S.A.</span> — <span class="role">Estagiário em Engenharia de Processos</span>
+                        </div>
+                        <div class="date">Abr. 2025 – Fev. 2026 | Betim, MG</div>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li><strong>Projeto Six Sigma / Macharia:</strong> Auxiliou projeto de redução da variabilidade de resina na areia de fundição de ferro em ~20%, aplicando CEP e ferramentas DMAIC via Minitab.</li>
+                        <li><strong>Otimização A3 & Standard Flow:</strong> Otimizou a rotina de preparo de amostras de ferro fundido, reduzindo o tempo de ciclo em ~30% por reorganização de layout e padronização operacional.</li>
+                        <li><strong>Qualidade & Auditorias:</strong> Apoiou auditorias internas de processos produtivos, mapeando não conformidades e auxiliando planos de ação corretiva.</li>
+                        <li><strong>Dashboards & KPIs:</strong> Automatizou dashboards operacionais em Excel e Power BI com interface direta entre Operação, Engenharia e Gestão.</li>
+                    </ul>
+                </div>
+
+                <!-- EngeMat Soluções -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="company">EngeMat Soluções (Empresa Júnior CEFET-MG)</span> — <span class="role">Diretor Presidente</span>
+                        </div>
+                        <div class="date">Jul. 2022 – Jul. 2024 | Belo Horizonte, MG</div>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li><strong>Gestão Estratégica & Faturamento:</strong> Liderou reestruturação que resultou em <strong>3x de crescimento no faturamento anual</strong> e expansão do quadro de membros em 4x.</li>
+                        <li><strong>Projetos B2B em Materiais:</strong> Gerenciou ciclo completo de projetos de consultoria técnica em Engenharia de Materiais, da proposta comercial à entrega final.</li>
+                        <li><strong>Gestão por Indicadores:</strong> Coordenou 4 diretorias e implementou sistema de KPIs para monitoramento contínuo de desempenho organizacional.</li>
+                    </ul>
+                </div>
+
+                <!-- TSEA Energia -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">
+                        <div>
+                            <span class="company">TSEA Energia</span> — <span class="role">Estagiário Técnico em Química</span>
+                        </div>
+                        <div class="date">Set. 2021 – Fev. 2022 | Contagem, MG</div>
+                    </div>
+                    <ul class="timeline-bullets">
+                        <li><strong>Garantia da Qualidade & Ensaio de Materiais:</strong> Realizou bateria de ensaios físico-químicos em óleos isolantes minerais e vegetais para transformadores e reguladores de tensão sob normas ABNT NBR, ASTM e IEC (rigidez dielétrica, Karl Fischer, acidez, enxofre corrosivo ASTM D130, grau de polimerização).</li>
+                        <li><strong>Sistemas ISO:</strong> Atuação prática em ambiente industrial altamente regulado e certificado pelas normas ISO 9001, ISO 14001 e OHSAS 18001.</li>
+                        <li><strong>Automação de Dados:</strong> Desenvolveu e automatizou planilhas de controle laboratorial para registro de ensaios, otimizando o tempo de emissão de laudos.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Technical Competencies & Education Grid -->
+        <section id="competencias">
+            <div class="section-header">
+                <div class="section-subtitle">// Domínio Técnico & Acadêmico</div>
+                <h2 class="section-title">Competências & Formação</h2>
+            </div>
+
+            <div class="skills-grid">
+                
+                <div class="skill-box">
+                    <div class="skill-title"><i class="fa-solid fa-gears"></i> Processos & Qualidade</div>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> Lean Six Sigma Green Belt</li>
+                        <li><i class="fa-solid fa-check"></i> DMAIC, CEP, PDCA, SIPOC & A3</li>
+                        <li><i class="fa-solid fa-check"></i> Normas ISO 9001, 14001, OHSAS 18001</li>
+                        <li><i class="fa-solid fa-check"></i> Análise Minitab & Estatística</li>
+                        <li><i class="fa-solid fa-check"></i> Mapeamento de Processos (VSM/POP)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title"><i class="fa-solid fa-atom"></i> Materiais & Ensaios</div>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> Caracterização (MEV, EDS, Metalografia)</li>
+                        <li><i class="fa-solid fa-check"></i> Degradação & Confiabilidade</li>
+                        <li><i class="fa-solid fa-check"></i> Ensaios Mecânicos e Físico-Químicos</li>
+                        <li><i class="fa-solid fa-check"></i> Polímeros, Metais & Revestimentos</li>
+                        <li><i class="fa-solid fa-check"></i> Normas ASTM, ABNT, IEC, ISO</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title"><i class="fa-solid fa-code"></i> Dados & Software</div>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> Python (Pandas, Scikit-Learn)</li>
+                        <li><i class="fa-solid fa-check"></i> Power BI & Excel Avançado (VBA)</li>
+                        <li><i class="fa-solid fa-check"></i> Siemens NX (Modelagem CAD 3D)</li>
+                        <li><i class="fa-solid fa-check"></i> Machine Learning & Séries Temporais</li>
+                        <li><i class="fa-solid fa-check"></i> Git & GitHub</li>
+                    </ul>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-title"><i class="fa-solid fa-graduation-cap"></i> Formação & Idiomas</div>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-check"></i> Eng. de Materiais — CEFET-MG</li>
+                        <li><i class="fa-solid fa-check"></i> Intercâmbio FEUP (Portugal)</li>
+                        <li><i class="fa-solid fa-check"></i> Técnico em Química — CEFET-MG</li>
+                        <li><i class="fa-solid fa-check"></i> Inglês C2 / B2 (TOEFL iTP 567)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer / Contact -->
+        <footer id="contato">
+            <p style="margin-bottom: 0.75rem; color: var(--text-main); font-weight: 600; font-size: 1rem;">
+                Adálcio Hugo Gonçalves dos Santos
+            </p>
+            <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                Belo Horizonte, MG — Brasil &nbsp;·&nbsp; <a href="mailto:adalciobh@gmail.com">adalciobh@gmail.com</a>
+            </p>
+            <div style="display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;">
+                <a href="https://linkedin.com/in/adalcio-hugo" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn ↗</a>
+                <a href="https://github.com/adalciohugo" target="_blank"><i class="fa-brands fa-github"></i> GitHub ↗</a>
+                <a href="mailto:adalciobh@gmail.com"><i class="fa-solid fa-envelope"></i> E-mail</a>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-subtle);">
+                © 2026 Adálcio Hugo · Engenharia de Materiais, Processos & Inteligência de Dados.
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Project Filter Script -->
+    <script>
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    const categories = card.getAttribute('data-category').split(' ');
+                    if (categories.includes(category)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+    </script>
 </body>
 </html>
